@@ -1,6 +1,7 @@
 import random
 from dataclasses import dataclass
 from collections import Counter
+from typing import Optional
 # import colorama
 # from colorama import Fore, Style
 
@@ -37,8 +38,6 @@ class Guess:
         else:
             return None
 
-
-
 @dataclass
 class Guesses:
     guesses: list[Guess]
@@ -69,11 +68,36 @@ class Guesses:
 
         in_comb = [c for c, res in checked.items() if res == 1]
         not_in_comb = [c for c, res in checked.items() if res == 0]
-        
+
         return in_comb, not_in_comb, maybes
 
         
-    # def 
+    def color_can_be_at(self, color: str, pos: int, arranged: dict) -> bool:
+        for g in self.guesses:
+            if g.line[pos] == color:
+                if g.black == 0:
+                    return False
+                well_arranged = [c for c, p in arranged if g.line[p] == c]
+                if g.black - len(well_arranged) == 0:
+                    return False
+        return True
+    
+    def positions(self):
+        in_comb, not_in_comb, maybes = self.colors_reduce()
+        arranged = {}
+        color_results = {c:list(range(5)) for c in in_comb}
+        for c in in_comb:
+            for pos in range(5):
+                verdict = self.color_can_be_at(c, pos, arranged)
+                if not verdict:
+                    color_results[c].remove(pos)
+            if len(color_results[c]) == 1:
+                arranged[c] = pos
+        return arranged
+
+    
+
+
 
 colors = {"w":"white",
           "y":"yellow",
@@ -149,6 +173,7 @@ def round():
         print(f"{str(black)} black{black_numb}, {str(white)} white{white_numb}")
         
         in_comb, not_in_comb, maybes = checked_lines.colors_reduce()
+        arranged = checked_lines.positions()
         if len(in_comb) != 5:
             if in_comb != []:
                 print("Hint: in the combination:", ", ".join(in_comb))
@@ -159,7 +184,7 @@ def round():
                 for maybe in maybes.values():
                     print(f"exactly {str(maybe[1])} out of {', '.join(maybe[0])}")
         else:
-            ("The correct combination is:", ", ".join(in_comb))
+            ("The correct color set is:", ", ".join(in_comb))
         print()
 
 
