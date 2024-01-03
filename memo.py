@@ -2,8 +2,6 @@ import random
 from dataclasses import dataclass
 from collections import Counter
 from typing import Optional
-# import colorama
-# from colorama import Fore, Style
 
 @dataclass
 class Guess:
@@ -71,33 +69,6 @@ class Guesses:
 
         return in_comb, not_in_comb, maybes
 
-        
-    def color_can_be_at(self, color: str, pos: int, arranged: dict) -> bool:
-        for g in self.guesses:
-            if g.line[pos] == color:
-                if g.black == 0:
-                    return False
-                well_arranged = [c for c, p in arranged if g.line[p] == c]
-                if g.black - len(well_arranged) == 0:
-                    return False
-        return True
-    
-    def positions(self):
-        in_comb, not_in_comb, maybes = self.colors_reduce()
-        arranged = {}
-        color_results = {c:list(range(5)) for c in in_comb}
-        for c in in_comb:
-            for pos in range(5):
-                verdict = self.color_can_be_at(c, pos, arranged)
-                if not verdict:
-                    color_results[c].remove(pos)
-            if len(color_results[c]) == 1:
-                arranged[c] = pos
-        return arranged
-
-    
-
-
 
 colors = {"w":"white",
           "y":"yellow",
@@ -132,8 +103,6 @@ def get_line():
         raise Exception("looks like you misspelled the color code")
 
 def check_line(user_line: list[str], comb: list[str]):
-    # black = 0
-    # white = 0
     checked_colors = {}
     for i, c in enumerate(user_line):
         if c in comb:
@@ -147,7 +116,6 @@ def check_line(user_line: list[str], comb: list[str]):
     white = sum([1 for res in checked_colors.values() if res == 'white'])
     return black, white
 
-# def possibilities()
 
 def round():
     mycomb = invent_comb()
@@ -158,7 +126,6 @@ def round():
     while black != 5:
         try:
             user_inp = get_line()
-            # print(Fore.CYAN + user_inp)
             n_tries += 1
         except Exception as ex:
             print(ex)
@@ -167,18 +134,18 @@ def round():
         
         record = Guess(line=user_inp, black=black, white=white)
         checked_lines.guesses.append(record)
-        # checked_colors = checked_lines.checked_colors()
+
         black_numb = 's' if black != 1 else ''
         white_numb = 's' if white != 1 else ''
         print(f"{str(black)} black{black_numb}, {str(white)} white{white_numb}")
         
         in_comb, not_in_comb, maybes = checked_lines.colors_reduce()
-        arranged = checked_lines.positions()
+        
         if len(in_comb) != 5:
             if in_comb != []:
                 print("Hint: in the combination:", ", ".join(in_comb))
             if not_in_comb != []:
-                print("Hint: NOT in the combination:", ", ".join(not_in_comb))
+                print("Hint: NOT in the combination:", ", ".join(not_in_comb))            
             if len(maybes) != 0:
                 print("Hint:")
                 for maybe in maybes.values():
