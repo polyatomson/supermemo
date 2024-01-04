@@ -1,0 +1,29 @@
+.container {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    color: rgb(7, 117, 97);
+    
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(99, 99, 99);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.bi-circle-fill:hover {
+    cursor: pointer;
+}
+
+.mydiv {
+    height: 200px;
+    background-color: #fefefe;
+}
+
+.myseconddiv {
+    height: 100px;
+    background-color: green;
+}
