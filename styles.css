@@ -15,23 +15,56 @@ h2 {
 }
 
 
-
-
 .colors:hover {
     cursor: grab;
 }
 
 .over {
         border: 3px dotted #666;
+        background-color: #bbb !important;
       }
 
+.marble {
+        height: 40px;
+        width: 40px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        font-size: 30px;
+        color: white;
+      }
 
-.mydiv {
-    height: 200px;
-    background-color: rgb(155, 18, 0);
+.red {
+    background-color: #ff2f2f;
+}
+.orange {
+    background-color: #ffbb00;
 }
 
-.myseconddiv {
-    height: 100px;
-    background-color: green;
+.yellow {
+    background-color: #fff535;
+    color: #313131;
+}
+
+.green {
+    background-color: #1aff00;
+}
+
+.blue {
+    background-color: #00c8ff;
+}
+
+.white {
+    background-color: white;
+    border-color: #bbb;
+    border-style: solid;
+    color: #313131;
+}
+
+.black {
+    background-color: #313131;
+}
+
+.brown {
+    background-color: #884200;
 }
