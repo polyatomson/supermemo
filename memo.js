@@ -5,32 +5,32 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
 function handleDragStart(e) {
-    dragSrcEl = this.outerHTML;
-    // dragSrcEl.classList.add('dropped');
-    console.log('dragSrcEl', dragSrcEl)
-    e.dataTransfer.effectAllowed = 'copy';
-    e.dataTransfer.setData('text/html', this.outerHTML);
-    // console.log('in transfer', this)
+    console.log('event', e)
+    console.log('this', this)
+    dragSrcEl = this
+    console.log('started dragging', this)
+    if (this.classList[1] === undefined) {
+        // console.log(this.classList)
+        console.log("second class", this.classList[1]);
+        // console.log("list of classes", this.classList[0]);
+        console.log('new color');
+        dragSrcEl.classList.add('dropped');
+        dragSrcEl = dragSrcEl.outerHTML;
+        e.dataTransfer.effectAllowed = 'copy';
+        e.dataTransfer.setData('text/plain', this.outerHTML);
+    }
+    else {
+        console.log('moving dropped', dragSrcEl.innerHTML)
+        dragSrcEl = dragSrcEl.innerHTML;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dragSrcEl);
+
+    }
 }
 
-function handleDragStartMove(e) {
-    dragSrcEl = this.outerHTML;
-    // dragSrcEl.classList.add('dropped');
-    console.log('dragSrcEl', dragSrcEl)
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.outerHTML);
-    // console.log('in transfer', this)
-}
-
-// function handleDragStartMove(e) {
-//     dragSrcEl = this.outerHTML;
-//     // console.log('dragSrcEl', this)
-//     e.dataTransfer.effectAllowed = 'move';
-// }
-  
 function handleDragEnd(e) {
     
-  }
+  };
 
   function handleDragOver(e) {
     e.preventDefault();
@@ -48,30 +48,14 @@ function handleDragLeave(e) {
 
 function handleDrop(e) {
     e.stopPropagation(); // stops the browser from redirecting.
-    console.log("dragSrcEl", dragSrcEl)
-    console.log("this", this)
-
-    if (this.classList[1] !== 'filled')  {
-        // console.log("class_list", this.classList)
-        console.log("copying")
-        // this.innerHTML = dragSrcEl;
-        // dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
-        this.classList.add('filled');
-        // console.log("dragSrcEL.innerHTML", dragSrcEl);
-        // console.log("in transfer", e.dataTransfer.getData('text/html'));
-    }
-    else {
-        console.log("trying to replace")
-        console.log("recieved data", e.dataTransfer.getData('text/html'))
-        // dragSrcEl = this.innerHTML
-        this.innerHTML = e.dataTransfer.getData('text/html');
-
-    }
-    // console.log(this);
+    console.log("New", dragSrcEl)
+    dragSrcEl = this.children[1]
+    console.log("Old", dragSrcEl)
+    this.innerHTML = e.dataTransfer.getData('text/plain');
+    this.classList.add('filled');
 
     return false;
-  }
+  };
   
 let colors = document.querySelectorAll('.col img.colors');
     console.log(colors)
@@ -88,7 +72,7 @@ let colors = document.querySelectorAll('.col img.colors');
         // console.log(el.classList[1])
     });
     positions.forEach(function (position) {
-        position.addEventListener('dragstart', handleDragStartMove);
+        position.addEventListener('dragstart', handleDragStart);
         position.addEventListener('dragover', handleDragOver);
         position.addEventListener('dragenter', handleDragEnter);
         position.addEventListener('dragleave', handleDragLeave);

@@ -14,13 +14,21 @@ h2 {
     font-weight: bold;
 }
 
-.bi-circle-fill:hover {
-    cursor: pointer;
+
+
+
+.colors:hover {
+    cursor: grab;
 }
+
+.over {
+        border: 3px dotted #666;
+      }
+
 
 .mydiv {
     height: 200px;
-    background-color: #fefefe;
+    background-color: rgb(155, 18, 0);
 }
 
 .myseconddiv {
