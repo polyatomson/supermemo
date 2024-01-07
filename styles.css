@@ -3,13 +3,13 @@
 }
 
 h1 {
-    color: rgb(7, 117, 97);
+    color: #077561;
     
     font-weight: bold;
 }
 
 h2 {
-    color: rgb(99, 99, 99);
+    color: #636363;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
@@ -67,4 +67,14 @@ h2 {
 
 .brown {
     background-color: #884200;
+}
+
+.btn-primary {
+    background-color: #06ac8e;
+    border-color: #077561;;
+}
+
+.btn-primary:hover {
+    background-color: #077561;
+    border-color:  #06ac8e;
 }

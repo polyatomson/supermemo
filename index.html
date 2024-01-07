@@ -18,9 +18,9 @@
             Drag and drop the colors to the board to guess the sequence
         </div>
 
-        <table class="table text-center">
+        <table class="table text-center" id="guesses">
             <tbody>
-                <tr>
+                <tr id="blank">
                     <td class="positions" id=1>
                     <span class="marble">1</span>
                     </td>
@@ -68,6 +68,11 @@
         </div>
 
     </div>
-<script src="memo.js"></script>
+    <div class="container text-center pt-3">
+        <button class="btn btn-primary" type="submit" id="input_submit">Check row</button>
+    </div>
+<script src="drag_and_drop.js"></script>
+<script src="load_input.js"></script>
+
 </body>
 </html>

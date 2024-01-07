@@ -1,13 +1,14 @@
-document.addEventListener('DOMContentLoaded', (event) => {
 
-function handleDragStart(e) {
+function drag_and_drop() {  document.addEventListener('DOMContentLoaded', (event) => {
+
+  function handleDragStart(e) {
     e.dataTransfer.items.add(e.target.classList, "text_class");
     console.log("moving from", this.id)
     e.dataTransfer.items.add(this.id, "text_id");
     
-}
+  }
 
-function handleDragEnd(e) {    
+  function handleDragEnd(e) {    
   };
 
   function handleDragOver(e) {
@@ -16,16 +17,16 @@ function handleDragEnd(e) {
     return false;
   }
 
-function handleDragEnter(e) {
+  function handleDragEnter(e) {
     // console.log(e);
     // this.classList.add('over');
   }
 
-function handleDragLeave(e) {
+  function handleDragLeave(e) {
     this.classList.remove('over');
   }
 
-function handleDrop(e) {
+  function handleDrop(e) {
     e.stopPropagation(); // stops the browser from redirecting.
     this.classList.remove('over');
     var new_class = e.dataTransfer.getData("text_class");
@@ -36,7 +37,7 @@ function handleDrop(e) {
             var previous_cell = document.getElementById(previous_id)
             console.log("previous cell", previous_cell)
             previous_cell.children[0].classList = e.target.classList
-         }
+          }
         e.target.classList = new_class;
         e.target.draggable = true;
     }
@@ -45,13 +46,13 @@ function handleDrop(e) {
             var previous_cell = document.getElementById(previous_id)
             console.log("previous cell", previous_cell)
             previous_cell.children[0].classList = e.target.children[0].classList
-         }
+          }
         e.target.children[0].classList = new_class
         e.target.children[0].draggable = true;
     }
   };
-  
-let colors = document.querySelectorAll('.colors');
+
+  let colors = document.querySelectorAll('.colors');
     console.log(colors)
     colors.forEach(function (color) {
         color.addEventListener('dragstart', handleDragStart);
@@ -60,7 +61,7 @@ let colors = document.querySelectorAll('.colors');
         
   });
 
-  let positions = document.querySelectorAll('td.positions');
+  let positions = document.querySelectorAll('#blank td.positions');
     console.log(positions)
     positions.forEach(function (position) {
         position.addEventListener('dragstart', handleDragStart);
@@ -71,4 +72,6 @@ let colors = document.querySelectorAll('.colors');
         position.addEventListener('drop', handleDrop);
     });
 
-});
+  });}
+
+  drag_and_drop()
