@@ -14,6 +14,7 @@ function check_row() {
         alert('All positions should be filled')
         return false
     }
+    
     cells = submitted_row.querySelectorAll('td.positions')
     cells.forEach(cell => {
         // console.log(marble.classList[1])
@@ -58,6 +59,8 @@ function check_row() {
             position.addEventListener('dragend', handleDragEnd);
             position.addEventListener('drop', handleDrop);
         });
+    let input_colors = JSON.stringify(picked_colors)
+    return input_colors
     };
 
 
