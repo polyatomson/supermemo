@@ -1,6 +1,4 @@
 
-function drag_and_drop() {  document.addEventListener('DOMContentLoaded', (event) => {
-
   function handleDragStart(e) {
     e.dataTransfer.items.add(e.target.classList, "text_class");
     console.log("moving from", this.id)
@@ -71,7 +69,3 @@ function drag_and_drop() {  document.addEventListener('DOMContentLoaded', (event
         position.addEventListener('dragend', handleDragEnd);
         position.addEventListener('drop', handleDrop);
     });
-
-  });}
-
-  drag_and_drop()
