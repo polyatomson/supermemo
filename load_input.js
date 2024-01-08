@@ -1,4 +1,4 @@
-function check_row() {
+function get_row() {
     submitted_row = document.getElementById("blank")
     marbles = submitted_row.querySelectorAll('.marble')
     var picked_colors = Array()
@@ -30,7 +30,8 @@ function check_row() {
         });
     var table = document.getElementById("guesses")
     var row_lengths = table.rows.length
-    submitted_row.id = 0 + row_lengths
+    var new_id = 'guess'+String(row_lengths)
+    submitted_row.id = new_id+''
     var row = table.insertRow(-1)
     row.id = 'blank'
     row.innerHTML = `<td class="positions" id='input1'>
@@ -47,7 +48,18 @@ function check_row() {
     </td>
     <td id='input5' class="positions">
     <span class="marble">5</span>
-    </td>`
+    </td>
+    <td class="row_result">
+                        <div>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                        </div>
+                        <div>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                        </div>
+                    </td>`
     let positions = document.querySelectorAll('#blank td.positions')
     console.log(positions)
         positions.forEach(function (position) {
@@ -59,11 +71,16 @@ function check_row() {
             position.addEventListener('dragend', handleDragEnd);
             position.addEventListener('drop', handleDrop);
         });
-    let input_colors = JSON.stringify(picked_colors)
-    return input_colors
+    // let input_colors = JSON.stringify(picked_colors)
+    // fetch ('http://localhost:6969//get_input', {
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //        input_colors
+    //     })
+    // })
+    check_row(picked_colors, new_id)
     };
 
 
 subm_button = document.getElementById("input_submit")
-subm_button.addEventListener('click', check_row);
-// drag_and_drop()
+subm_button.addEventListener('click', get_row);

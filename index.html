@@ -36,10 +36,21 @@
                     <td id="input5" class="positions">
                     <span class="marble">5</span>
                     </td>
+                    <td class="row_result">
+                        <div>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                        </div>
+                        <div>
+                            <span class="pin"></span>
+                            <span class="pin"></span>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        <div class="container text-center">
+        <div class="container text-center" id="marble_set">
             <div class="row mt-5">
             <div class="col colors">
                 <span class="marble red" draggable="true"></span>
@@ -71,7 +82,10 @@
     <div class="container text-center pt-3">
         <button class="btn btn-primary" type="submit" id="input_submit">Check row</button>
     </div>
+
+<script src="create_combination.js"></script>
 <script src="drag_and_drop.js"></script>
+<script src="check_row.js"></script>
 <script src="load_input.js"></script>
 
 </body>

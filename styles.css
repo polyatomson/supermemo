@@ -34,6 +34,20 @@ h2 {
         color: white;
       }
 
+.pin {
+        height: 15px;
+        width: 20px;
+        background-color: #bbb;
+        border-radius: 20%;
+        display: inline-block;
+        font-size: 30px;
+        color: white;
+    }
+
+/* .row_result {
+    padding-top: 15px !important;
+} */
+
 .red {
     background-color: #ff2f2f;
 }
