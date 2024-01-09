@@ -60,6 +60,19 @@ function get_row() {
                             <span class="pin"></span>
                         </div>
                     </td>`
+    
+    var previous_guesses_str = localStorage.getItem('guesses')
+    console.log('previous_guesses', previous_guesses_str)
+    var previous_guesses = JSON.parse(previous_guesses_str)
+    console.log('previous_guesses', previous_guesses)
+    if (previous_guesses == null) {
+        previous_guesses = {}
+    }
+    console.log('previous_guesses', previous_guesses)
+    console.log('typeof_previous_guesses', typeof(previous_guesses))
+    // previous_guesses.push({key:new_id, value: picked_colors})
+    previous_guesses[new_id] = picked_colors
+    localStorage.setItem('guesses', JSON.stringify(previous_guesses))
     let positions = document.querySelectorAll('#blank td.positions')
     console.log(positions)
         positions.forEach(function (position) {
@@ -71,6 +84,7 @@ function get_row() {
             position.addEventListener('dragend', handleDragEnd);
             position.addEventListener('drop', handleDrop);
         });
+    
     // let input_colors = JSON.stringify(picked_colors)
     // fetch ('http://localhost:6969//get_input', {
     //     method: 'POST',

@@ -1,4 +1,7 @@
 
+
+  
+  
   function handleDragStart(e) {
     e.dataTransfer.items.add(e.target.classList, "text_class");
     console.log("moving from", this.id)
@@ -69,3 +72,18 @@
         position.addEventListener('dragend', handleDragEnd);
         position.addEventListener('drop', handleDrop);
     });
+
+
+function reset_row() {
+  let positions_current = document.querySelectorAll('#blank td.positions');
+  positions_current.forEach(function (position) {
+    var pos_classes = position.children[0].classList
+    console.log('pos_classes', pos_classes)
+    if (pos_classes.length > 1) {
+      pos_classes.remove(pos_classes[1])
+    }
+  });
+}
+  let reset_btn = document.getElementById('input_reset')
+  reset_btn.addEventListener('click', reset_row)
+  

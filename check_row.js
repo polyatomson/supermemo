@@ -1,6 +1,9 @@
 
 function check_row(picked_colors, row_id) {
     console.log("checked_row input", picked_colors)
+    console.log("row_id", row_id)
+    var combination = localStorage.getItem("combination")
+    combination = JSON.parse(combination)
     console.log("checking against", combination)
     var checked_colors = {}
     Object.keys(picked_colors).forEach(i => {
