@@ -95,6 +95,21 @@ function get_row() {
     check_row(picked_colors, new_id)
     };
 
+function generate_row() {
+    console.log('generating')
+    var blank_marbles = document.querySelectorAll("#blank .marble")
+    console.log(blank_marbles)
+    const possible_colors = ["white","yellow","blue","green","brown","black","red","orange"]
+    for (each_marble of blank_marbles) {
+        console.log(each_marble)
+        picked = possible_colors[Math.floor(Math.random()*possible_colors.length)];
+        // console.log(picked)
+        console.log(each_marble.classList)
+        each_marble.classList.add(picked)
+    }
+}
 
 subm_button = document.getElementById("input_submit")
 subm_button.addEventListener('click', get_row);
+subm_button = document.getElementById("submit_random")
+subm_button.addEventListener('click', generate_row);

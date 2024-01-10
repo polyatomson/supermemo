@@ -14,8 +14,11 @@ function restore_from_storage(e) {
     // for (row_id in row_records) {
     //     row_ids.push
     // }
+    var i = 0
     for (row_id in row_records) {
-        var restored_row = table.insertRow(0)
+        // var row_place = table.rows.length-i
+        var restored_row = table.insertRow(i)
+        i++
         restored_row.id = row_id
         restored_row.innerHTML = `<td class="positions" id='input1'>
     <span class="marble">1</span>
@@ -60,4 +63,15 @@ function restore_from_storage(e) {
   }
 }
   
-  window.addEventListener("load", restore_from_storage)
+window.addEventListener("load", restore_from_storage)
+
+function load_new_game(e) {
+    var load_new = confirm('Are you sure you want to end this game and start a new one?')
+    if (load_new == true) {
+        localStorage.clear()
+        location.reload()
+    }
+}
+
+let new_game = document.getElementById("new_game")
+new_game.addEventListener("click", load_new_game)
