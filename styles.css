@@ -41,7 +41,6 @@ h2 {
         border-radius: 20%;
         display: inline-block;
         font-size: 30px;
-        color: white;
     }
 
 /* .row_result {
@@ -50,37 +49,45 @@ h2 {
 
 .red {
     background-color: #ff2f2f;
+    color: #ff2f2f;
 }
 .orange {
     background-color: #ffbb00;
+    color: #ffbb00;
 }
 
 .yellow {
     background-color: #fff535;
-    color: #313131;
+    color: #fff535;
+    /* color: #313131; */
 }
 
 .green {
     background-color: #1aff00;
+    color: #1aff00;
 }
 
 .blue {
     background-color: #00c8ff;
+    color: #00c8ff;
 }
 
 .white {
     background-color: white;
+    color: white;
     border-color: #bbb;
     border-style: solid;
-    color: #313131;
+    /* color: #313131; */
 }
 
 .black {
     background-color: #313131;
+    color: #313131;
 }
 
 .brown {
     background-color: #884200;
+    color: #884200;
 }
 
 .btn-primary {
